@@ -1,0 +1,27 @@
+Color: black
+Stitch type: single
+Amount of rows: 4
+
+Color: blue
+Stitch type: single
+Amount of rows: 4
+
+Color: pink
+Stitch type: treble
+Amount of rows: 4
+
+Color: red
+Stitch type: double
+Amount of rows: 4
+
+Color: pink
+Stitch type: treble
+Amount of rows: 4
+
+Color: red
+Stitch type: single
+Amount of rows: 1
+
+Color: pink
+Stitch type: single
+Amount of rows: 1
