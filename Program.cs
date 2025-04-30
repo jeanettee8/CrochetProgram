@@ -1,6 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Schema;
 
+//deepseek give tips and hints on how to improve, but at first without the answer (code) - want to learn from it
+
+//fix the method - the txt file doesnt have avsnitt
+//before i left it waited for a readkey, test wtithout
+
+
 namespace CrochetProgram
 {
     class Program
