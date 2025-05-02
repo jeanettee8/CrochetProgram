@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Schema;
 
-//AT THE END - deepseek give tips and hints on how to improve, but at first without the answer (code) - want to learn from it
-
-
-
+/*ive made a small crochet program, and want to receive hints on what i can improve, but not the answer, so i can learn without having the answer given to me. Only hints and tips on how i could improve and make the code better, for readability or for the user. first is my program.cs:    */
 
 namespace CrochetProgram
 {
@@ -17,20 +14,20 @@ namespace CrochetProgram
             Thread.Sleep(800);
             Console.WriteLine("If not your first time, would you like to empty the old pattern.txt file?");
             string? deleteTxtFileInput = Console.ReadLine();
-            // change to Contains = easier for user
-            switch (deleteTxtFileInput)
+            string[] yesInput = { "yes", "yup", "ja", "jepp", "ok"};
+            if (yesInput.Contains(deleteTxtFileInput, StringComparer.InvariantCultureIgnoreCase))
             {
-                case "yes":
                 File.Delete("pattern.txt");
                 Console.WriteLine("pattern.txt file successfully deleted!");
                 Console.WriteLine();
-                break;
-
-                case "no":
-                break;
             }
 
-            Console.WriteLine("Please input the different colors you're choosing from.");
+            Console.Write("Please input the different ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("colors");
+            Console.ResetColor();
+            Console.WriteLine(" you're choosing from.");
+            Console.WriteLine();
             Console.WriteLine("Press enter again when you're done!");
 
             List<string> colors = new List<string>();
@@ -60,6 +57,7 @@ namespace CrochetProgram
             Console.Write("stitches");
             Console.ResetColor();
             Console.WriteLine(" you're choosing from.");
+            Console.WriteLine();
             Console.WriteLine("Press enter again when you're done!");
 
             List<string> stitches = new List<string>();

@@ -1,40 +1,40 @@
-Color: red
-Stitch type: treble
-Amount of rows: 3
-
-Color: pink
+Color: blue
 Stitch type: double
-Amount of rows: 3
+Amount of rows: 1
 
-Color: blue
+Color: white
 Stitch type: treble
 Amount of rows: 3
 
-Color: blue
-Stitch type: treble
-Amount of rows: 5
+Color: black
+Stitch type: double
+Amount of rows: 2
 
-Color: red
+Color: brown
 Stitch type: treble
 Amount of rows: 1
 
-Color: red
+Color: orange
 Stitch type: double
+Amount of rows: 1
+
+Color: orange
+Stitch type: single
+Amount of rows: 3
+
+Color: blue
+Stitch type: single
 Amount of rows: 4
 
-Color: blue
-Stitch type: double
-Amount of rows: 2
-
-Color: red
-Stitch type: treble
-Amount of rows: 2
-
 Color: black
-Stitch type: treble
-Amount of rows: 2
+Stitch type: single
+Amount of rows: 3
 
-Color: blue
-Stitch type: treble
+Color: white
+Stitch type: double
+Amount of rows: 3
+
+Color: brown
+Stitch type: double
 Amount of rows: 2
 
