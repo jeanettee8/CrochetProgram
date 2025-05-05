@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Schema;
 
-/*ive made a small crochet program, and want to receive hints on what i can improve, but not the answer, so i can learn without having the answer given to me. Only hints and tips on how i could improve and make the code better, for readability or for the user. first is my program.cs:    */
-
 namespace CrochetProgram
 {
     class Program
@@ -20,6 +18,7 @@ namespace CrochetProgram
                 File.Delete("pattern.txt");
                 Console.WriteLine("pattern.txt file successfully deleted!");
                 Console.WriteLine();
+                Console.ReadKey();
             }
 
             Console.Write("Please input the different ");
@@ -32,22 +31,14 @@ namespace CrochetProgram
 
             List<string> colors = new List<string>();
 
-            bool enteringYarnColor;
-            while (enteringYarnColor = true) 
-            {
-                string? colorInput = Console.ReadLine();
-                if (string.IsNullOrEmpty(colorInput)) 
-                {
-                    break;
-                }
-                colors.Add(colorInput);
-            }
-
-            if (colors.Count == 0)
+            string? colorInput = Console.ReadLine();
+            if (string.IsNullOrEmpty(colorInput)) 
             {
                 Console.WriteLine("No colors entered!");
                 return;
             }
+            
+            colors.Add(colorInput);
         
             Random rnd = new Random();
             string yarnColor = colors[rnd.Next(colors.Count)];
@@ -62,8 +53,9 @@ namespace CrochetProgram
 
             List<string> stitches = new List<string>();
 
-            bool enteringStitchType;
-            while (enteringStitchType = true) 
+
+            bool enteringStitchType = true;
+            while (enteringStitchType) 
             {
                 string? stitchInput = Console.ReadLine();
                 if (string.IsNullOrEmpty(stitchInput)) 
@@ -85,9 +77,22 @@ namespace CrochetProgram
 
             string stitchType = stitches[rnd.Next(stitches.Count)];
 
-            Console.Write("Please input the maximum ");
+
+            Console.Write("Please input the ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("amount of rows");
+            Console.Write("minimum amount of rows");
+            Console.ResetColor();
+            Console.WriteLine(" for your color");
+            int minRows;
+            while (!int.TryParse(Console.ReadLine(), out minRows))
+            {
+                Console.WriteLine("Please input a valid number.");
+            }
+
+
+            Console.Write("Please input the ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("maximum amount of rows");
             Console.ResetColor();
             Console.WriteLine(" for your color");
             int maxRows;
@@ -95,7 +100,7 @@ namespace CrochetProgram
             {
                 Console.WriteLine("Please input a valid number.");
             }
-            int rowAmount = rnd.Next(1, (maxRows + 1));
+            int rowAmount = rnd.Next(minRows, (maxRows + 1));
 
             var generatePattern = new Method();
             Console.WriteLine("How many times would you like to generate?");
