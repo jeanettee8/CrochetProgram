@@ -1,6 +1,6 @@
 namespace CrochetProgram
 {
-    public class Method
+    public class HelperMethods
     {
         public void GeneratePattern(int rowAmount, string stitchType, string yarnColor)
         {
@@ -8,6 +8,13 @@ namespace CrochetProgram
             Console.WriteLine(finishedPattern);
             string filePath = "pattern.txt";
             File.AppendAllText(filePath, finishedPattern);
+        }
+
+        public void ColorText(string redTxt)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(redTxt);
+            Console.ResetColor();
         }
 
     }

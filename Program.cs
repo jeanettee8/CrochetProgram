@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Xml.Schema;
 
 namespace CrochetProgram
@@ -9,7 +10,6 @@ namespace CrochetProgram
         {
             Console.WriteLine("Welcome to the Crochet Program!");
             Console.WriteLine();
-            Thread.Sleep(800);
             Console.WriteLine("If not your first time, would you like to empty the old pattern.txt file?");
             string? deleteTxtFileInput = Console.ReadLine();
             string[] yesInput = { "yes", "yup", "ja", "jepp", "ok"};
@@ -21,32 +21,37 @@ namespace CrochetProgram
                 Console.ReadKey();
             }
 
+            var colorText = new HelperMethods();
+
             Console.Write("Please input the different ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("colors");
-            Console.ResetColor();
+            colorText.ColorText("colors");
             Console.WriteLine(" you're choosing from.");
             Console.WriteLine();
             Console.WriteLine("Press enter again when you're done!");
 
             List<string> colors = new List<string>();
 
-            string? colorInput = Console.ReadLine();
-            if (string.IsNullOrEmpty(colorInput)) 
+            bool enteringYarnColor = true;
+            while (enteringYarnColor)
             {
-                Console.WriteLine("No colors entered!");
+                string? colorInput = Console.ReadLine();
+                if (string.IsNullOrEmpty(colorInput)) 
+                {
+                    break;
+                } 
+               colors.Add(colorInput);
+            }
+
+            if (colors.Count == 0)
+            {
+                Console.Write("No ");
+                colorText.ColorText("colors");
+                Console.WriteLine(" entered");
                 return;
             }
-            
-            colors.Add(colorInput);
         
-            Random rnd = new Random();
-            string yarnColor = colors[rnd.Next(colors.Count)];
-
             Console.Write("Please input the different ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("stitches");
-            Console.ResetColor();
+            colorText.ColorText("stitches");
             Console.WriteLine(" you're choosing from.");
             Console.WriteLine();
             Console.WriteLine("Press enter again when you're done!");
@@ -68,20 +73,14 @@ namespace CrochetProgram
             if (stitches.Count == 0)
             {
                 Console.Write("No ");
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write("stitches");
-                Console.ResetColor();
+                colorText.ColorText("stitches");
                 Console.WriteLine(" entered");
                 return;
             }
 
-            string stitchType = stitches[rnd.Next(stitches.Count)];
-
 
             Console.Write("Please input the ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("minimum amount of rows");
-            Console.ResetColor();
+            colorText.ColorText("minimum amount of rows");
             Console.WriteLine(" for your color");
             int minRows;
             while (!int.TryParse(Console.ReadLine(), out minRows))
@@ -89,35 +88,33 @@ namespace CrochetProgram
                 Console.WriteLine("Please input a valid number.");
             }
 
-
             Console.Write("Please input the ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("maximum amount of rows");
-            Console.ResetColor();
+            colorText.ColorText("maximum amount of rows");
             Console.WriteLine(" for your color");
             int maxRows;
             while (!int.TryParse(Console.ReadLine(), out maxRows))
             {
                 Console.WriteLine("Please input a valid number.");
             }
-            int rowAmount = rnd.Next(minRows, (maxRows + 1));
 
-            var generatePattern = new Method();
+            var generatePattern = new HelperMethods();
             Console.WriteLine("How many times would you like to generate?");
-            Thread.Sleep(500);
             Console.WriteLine("(For example, if you want to make a pattern for your next 5 colors)");
             int generateTimes;
             while (!int.TryParse(Console.ReadLine(), out generateTimes))
             {
                 Console.WriteLine("Please input a valid number.");
             }
+            
+            Random rnd = new Random();
+
             Console.WriteLine("Here is your costum pattern!");
             for (int i = 0; i < generateTimes; i++)
             {
-                int rowAmountTwo = rnd.Next(1, (maxRows + 1));
-                string stitchTypeTwo = stitches[rnd.Next(stitches.Count)];
-                string yarnColorTwo = colors[rnd.Next(colors.Count)];
-                generatePattern.GeneratePattern(rowAmountTwo, stitchTypeTwo, yarnColorTwo);
+                string yarnColor = colors[rnd.Next(colors.Count)];
+                string stitchType = stitches[rnd.Next(stitches.Count)];
+                int rowAmount = rnd.Next(minRows, (maxRows + 1));
+                generatePattern.GeneratePattern(rowAmount, stitchType, yarnColor);
                 Console.WriteLine();
             }
             Console.WriteLine("You can now find your updated pattern in the pattern.txt file.");
