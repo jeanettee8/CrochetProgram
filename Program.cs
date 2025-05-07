@@ -10,7 +10,7 @@ namespace CrochetProgram
         {
             Console.WriteLine("Welcome to the Crochet Program!");
             Console.WriteLine();
-            Console.WriteLine("If not your first time, would you like to empty the old pattern.txt file?");
+            Console.WriteLine("Would you like to delete the old pattern.txt file?");
             string? deleteTxtFileInput = Console.ReadLine();
             string[] yesInput = { "yes", "yup", "ja", "jepp", "ok"};
             if (yesInput.Contains(deleteTxtFileInput, StringComparer.InvariantCultureIgnoreCase))
@@ -18,7 +18,6 @@ namespace CrochetProgram
                 File.Delete("pattern.txt");
                 Console.WriteLine("pattern.txt file successfully deleted!");
                 Console.WriteLine();
-                Console.ReadKey();
             }
 
             var colorText = new HelperMethods();
@@ -26,7 +25,6 @@ namespace CrochetProgram
             Console.Write("Please input the different ");
             colorText.ColorText("colors");
             Console.WriteLine(" you're choosing from.");
-            Console.WriteLine();
             Console.WriteLine("Press enter again when you're done!");
 
             List<string> colors = new List<string>();
@@ -53,7 +51,6 @@ namespace CrochetProgram
             Console.Write("Please input the different ");
             colorText.ColorText("stitches");
             Console.WriteLine(" you're choosing from.");
-            Console.WriteLine();
             Console.WriteLine("Press enter again when you're done!");
 
             List<string> stitches = new List<string>();
