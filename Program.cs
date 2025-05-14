@@ -30,23 +30,26 @@ namespace CrochetProgram
             List<string> colors = new List<string>();
 
             bool enteringYarnColor = true;
-            while (enteringYarnColor)
+            do
             {
                 string? colorInput = Console.ReadLine();
+                colors.Add(colorInput);
                 if (string.IsNullOrEmpty(colorInput)) 
                 {
+                    enteringYarnColor = false;
                     break;
-                } 
-               colors.Add(colorInput);
-            }
+                }
 
-            if (colors.Count == 0)
-            {
-                Console.Write("No ");
-                colorText.ColorText("colors");
-                Console.WriteLine(" entered");
-                return;
+                if (colors.Count == 0)
+                {
+                    Console.Write("No ");
+                    colorText.ColorText("colors");
+                    Console.WriteLine(" entered");
+                    enteringYarnColor = true;
+                }
             }
+            while (enteringYarnColor == true);
+            
         
             Console.Write("Please input the different ");
             colorText.ColorText("stitches");
@@ -87,7 +90,7 @@ namespace CrochetProgram
 
             Console.Write("Please input the ");
             colorText.ColorText("maximum amount of rows");
-            Console.WriteLine(" for your color");
+            Console.WriteLine(" for your color");   
             int maxRows;
             while (!int.TryParse(Console.ReadLine(), out maxRows))
             {

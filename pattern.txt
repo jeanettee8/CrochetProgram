@@ -1,0 +1,20 @@
+Color: red
+Stitch type: hdc
+Amount of rows: 2
+
+Color: white
+Stitch type: double
+Amount of rows: 2
+
+Color: pink
+Stitch type: single
+Amount of rows: 3
+
+Color: pink
+Stitch type: double
+Amount of rows: 4
+
+Color: pink
+Stitch type: hdc
+Amount of rows: 2
+
